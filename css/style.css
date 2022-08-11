@@ -1,0 +1,142 @@
+/* VARIABLES */
+/* SITE */
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Space Mono', monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  background-color: #c5e4e7;
+}
+
+/* SECTION */
+.splitter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.heading {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  width: 10rem;
+  margin: auto;
+  color: #00494d;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.splitter {
+  padding: 3.3rem;
+  margin-top: 3.5rem;
+  border-radius: 2rem;
+  background-color: white;
+}
+
+.select_box {
+  position: relative;
+}
+
+.select_box__text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #5e7a7d;
+}
+
+.select_box__input {
+  font-family: 'Space Mono', monospace;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  font-size: 2.4rem;
+  font-weight: bold;
+  width: 100%;
+  margin: 0.5rem 0 4rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #00494d;
+  background-color: #f4fafa;
+  text-align: right;
+}
+
+.select_box__icon {
+  position: absolute;
+  top: 4.1rem;
+  left: 2rem;
+}
+
+.select_box__select {
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 4rem;
+}
+
+.select_box__select--input {
+  font-family: 'Space Mono', monospace;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  font-size: 2.4rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #00494d;
+  background-color: #f4fafa;
+  text-align: right;
+}
+
+.select_box__select--input::-webkit-input-placeholder {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.select_box__select--input:-ms-input-placeholder {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.select_box__select--input::-ms-input-placeholder {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.select_box__select--input::placeholder {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* HOVERS */
+/* MEDIA QUERIES */
+/*# sourceMappingURL=style.css.map */
