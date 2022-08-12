@@ -20,7 +20,6 @@ body {
 	font-family: 'Space Mono', monospace;
 	display: flex;
 	flex-direction: column;
-	// flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
@@ -35,12 +34,6 @@ input::placeholder {
 }
 
 /* SECTION */
-
-.splitter {
-	display: flex;
-	flex-wrap: wrap;
-}
-
 .heading {
 	font-size: 2.4rem;
 	text-transform: uppercase;
@@ -53,6 +46,10 @@ input::placeholder {
 }
 
 .splitter {
+	display: flex;
+	flex-direction: column;
+	min-width: 32rem;
+	max-width: 42rem;
 	padding: 3.3rem;
 	margin-top: 3.5rem;
 	border-radius: 2rem;
@@ -96,12 +93,21 @@ input::placeholder {
 		left: 2rem;
 	}
 
+	&__people_error,
+	&__bill_error {
+		display: none;
+		position: absolute;
+		right: 0;
+		font-size: 1.4rem;
+		font-weight: bold;
+		color: $error;
+		opacity: 0.5;
+	}
+
 	&__select {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(3, 5rem);
-		grid-column-gap: 0px;
-		grid-row-gap: 0px;
 		gap: 1rem;
 		width: 100%;
 		margin: 2rem 0;
@@ -157,12 +163,23 @@ input::placeholder {
 			background-color: $very-light-grayish-cyan;
 			text-align: right;
 		}
+
+		&--custom_error {
+			display: none;
+			position: absolute;
+			right: 0;
+			bottom: 11rem;
+			font-size: 1.4rem;
+			font-weight: bold;
+			color: $error;
+			opacity: 0.5;
+		}
 	}
 }
 
 .outcome_box {
 	width: 100%;
-	border-radius: 0.5rem;
+	border-radius: 2rem;
 	background-color: $very-dark-cyan;
 	padding: 2.5rem;
 
@@ -190,22 +207,21 @@ input::placeholder {
 	margin-top: 1rem;
 
 	&__text {
+		font-size: 1.4rem;
+		font-weight: bold;
+
 		&--text1 {
-			font-size: 1.4rem;
-			font-weight: bold;
 			color: $white;
 		}
 
 		&--text2 {
 			font-family: monospace;
-			font-size: 1.4rem;
-			font-weight: bold;
 			color: $dark-grayish-cyan;
 		}
 	}
 
 	&__result {
-		font-size: 3.2rem;
+		font-size: clamp(3.2rem, 5vw, 4.5rem);
 		font-weight: bold;
 		color: $strong-cyan;
 	}
@@ -213,6 +229,14 @@ input::placeholder {
 
 .text_box:nth-of-type(2) {
 	margin-top: 0.5rem;
+}
+
+.input_error {
+	border: 2px solid $error;
+}
+
+.error {
+	display: block;
 }
 
 /* HOVERS / ACTIVE */
@@ -240,6 +264,86 @@ input[type='radio'][name='tip_value']:checked + .select_box__select--btn_label {
 }
 
 /* MEDIA QUERIES */
+@media (min-width: 660px) {
+	.splitter {
+		flex-direction: row;
+		gap: 5rem;
+		max-width: 92rem;
+	}
 
-@media (min-width: 576px) {
+	.select_box {
+		&__input {
+			margin: 0.5rem 0 4.5rem;
+		}
+
+		&__input:nth-of-type(2) {
+			margin-bottom: 1.5rem;
+		}
+
+		&__icon:nth-of-type(2) {
+			top: 41.5rem;
+		}
+
+		&__select {
+			gap: 1.5rem;
+
+			&--custom_error {
+				bottom: 10rem;
+			}
+		}
+	}
+
+	.outcome_box {
+		&__reset_btn {
+			margin-top: 17rem;
+		}
+	}
+
+	.text_box:nth-of-type(2) {
+		margin-top: 3.5rem;
+	}
+}
+
+@media (min-width: 900px) {
+	.select_box {
+		&__input:nth-of-type(2) {
+			margin-bottom: 1.5rem;
+		}
+
+		&__icon:nth-of-type(2) {
+			top: 35rem;
+		}
+
+		&__select {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, 5rem);
+
+			&--btn_label:nth-of-type(1) {
+				grid-area: 1 / 1 / 2 / 2;
+			}
+			&--btn_label:nth-of-type(2) {
+				grid-area: 1 / 2 / 2 / 3;
+			}
+			&--btn_label:nth-of-type(3) {
+				grid-area: 1 / 3 / 2 / 4;
+			}
+			&--btn_label:nth-of-type(4) {
+				grid-area: 2 / 1 / 3 / 2;
+			}
+			&--btn_label:nth-of-type(5) {
+				grid-area: 2 / 2 / 3 / 3;
+			}
+
+			&--input {
+				grid-area: 2 / 3 / 3 / 4;
+			}
+		}
+	}
+
+	.outcome_box {
+		&__reset_btn {
+			margin-top: 10.5rem;
+		}
+	}
 }
