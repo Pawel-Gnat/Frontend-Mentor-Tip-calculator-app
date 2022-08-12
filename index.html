@@ -17,46 +17,62 @@
 	<main>
 		<section>
 			<h1 class="heading">splitter</h1>
-			<div class="splitter">
+			<form class="splitter">
 				<div class="select_box">
+
 					<label for="bill" class="select_box__label select_box__text">Bill</label>
-					<input type="number" class="select_box__input" name="bill">
+					<input type="number" class="select_box__input" name="bill" placeholder="0">
+
 					<img src="./images/icon-dollar.svg" alt="" aria-hidden="true" class="select_box__icon">
 
 					<p class="select_box__text">Select Tip %</p>
-					<div class="select_box__select">
-						<button class="select_box__select--btn">5%</button>
-						<button class="select_box__select--btn">10%</button>
-						<button class="select_box__select--btn">15%</button>
-						<button class="select_box__select--btn">25%</button>
-						<button class="select_box__select--btn">50%</button>
-						<label for="custom" class="select_box__select--label"></label>
-					<input type="number" class="select_box__select--input" name="custom" placeholder="Custom">
-					</div>
-					<label for="people" class="select_box__label select_box__text">Number of People</label>
-					<input type="number" class="select_box__input" name="people">
-					<img src="./images/icon-person.svg" alt="" aria-hidden="true" class="select_box__icon">
 
+					<div class="select_box__select">
+						<input type="radio" name="tip_value" class="select_box__select--btn" value="5%" id="5%"><label
+							for="5%" class="select_box__select--btn_label">5%</label>
+
+						<input type="radio" name="tip_value" class="select_box__select--btn" value="10%" id="10%"><label
+							for="10%" class="select_box__select--btn_label">10%</label>
+
+						<input type="radio" name="tip_value" class="select_box__select--btn" value="15%" id="15%"><label
+							for="15%" class="select_box__select--btn_label">15%</label>
+
+						<input type="radio" name="tip_value" class="select_box__select--btn" value="25%" id="25%"><label
+							for="25%" class="select_box__select--btn_label">25%</label>
+
+						<input type="radio" name="tip_value" class="select_box__select--btn" value="50%" id="50%"><label
+							for="50%" class="select_box__select--btn_label">50%</label>
+						<label for="custom" class="select_box__select--label"></label>
+
+						<input type="number" class="select_box__select--input" name="custom" placeholder="Custom">
+					</div>
+
+					<label for="people" class="select_box__label select_box__text">Number of People</label>
+					<input type="number" class="select_box__input" name="people" placeholder="0">
+
+					<img src="./images/icon-person.svg" alt="" aria-hidden="true" class="select_box__icon">
 				</div>
 
 				<div class="outcome_box">
-					<div class="tip">
-						<div class="tip__text">
-							<p class="tip__text--text1">Tip Amount</p>
-							<p class="tip__text--text2">/ person</p>
+					<div class="text_box">
+						<div class="text_box__text">
+							<p class="text_box__text--text1">Tip Amount</p>
+							<p class="text_box__text--text2">/ person</p>
 						</div>
-						<p class="tip__result">$5.27</p>
+						<p class="text_box__result">$0.00</p>
 					</div>
-					<div class="total">
-						<div class="total__text">
-							<p class="total__text--text1">Total</p>
-							<p class="total__text--text2">/ person</p>
+
+					<div class="text_box">
+						<div class="text_box__text">
+							<p class="text_box__text--text1">Total</p>
+							<p class="text_box__text--text2">/ person</p>
 						</div>
-						<p class="total__result">$5.27</p>
+						<p class="text_box__result">$0.00</p>
 					</div>
+
 					<button type="reset" class="outcome_box__reset_btn">reset</button>
 				</div>
-			</div>
+			</form>
 		</section>
 	</main>
 
