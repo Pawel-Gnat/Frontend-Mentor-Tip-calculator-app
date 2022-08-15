@@ -22,7 +22,7 @@
 
 					<p class="select_box__bill_error"></p>
 					<label for="bill" class="select_box__label select_box__text">Bill</label>
-					<input type="number" class="select_box__input" name="bill" placeholder="0" onchange="checkBill()">
+					<input type="number" class="select_box__input" name="bill" placeholder="0" id="billInput">
 
 					<img src="./images/icon-dollar.svg" alt="" aria-hidden="true" class="select_box__icon">
 
@@ -46,12 +46,12 @@
 						<label for="custom" class="select_box__select--label"></label>
 
 						<input type="number" class="select_box__select--input" name="custom" placeholder="Custom">
-						<p class="select_box__select--custom_error">Can't be zero</p>
+						<p class="select_box__select--custom_error"></p>
 					</div>
 
-					<p class="select_box__people_error">Can't be zero</p>
+					<p class="select_box__people_error"></p>
 					<label for="people" class="select_box__label select_box__text">Number of People</label>
-					<input type="number" class="select_box__input" name="people" placeholder="0">
+					<input type="number" class="select_box__input" name="people" placeholder="0" id="peopleInput">
 
 					<img src="./images/icon-person.svg" alt="" aria-hidden="true" class="select_box__icon">
 				</div>

@@ -8,12 +8,17 @@
 7. Calculate total value by adding calculated tip amount and divided bill value by number of people
 */
 
-const customInput = document.querySelector('.select_box__select--input')
+const customTipInput = document.querySelector('.select_box__select--input')
+const customTipTextError = document.querySelector('.select_box__select--custom_error')
+const tipRadioButtonValue = document.querySelectorAll('.select_box__select--btn')
 const tipValueInputs = document.querySelectorAll('.select_box__select--btn')
-const billInput = document.querySelector('.select_box__input')
+const billInput = document.querySelector('#billInput')
 const billTextError = document.querySelector('.select_box__bill_error')
+const peopleInput = document.querySelector('#peopleInput')
+const peopleTextError = document.querySelector('.select_box__people_error')
+const result = document.querySelectorAll('.text_box__result')
 
-customInput.addEventListener('click', e => {
+customTipInput.addEventListener('click', e => {
 	tipValueInputs.forEach(input => {
 		input.checked = false
 	})
@@ -21,47 +26,189 @@ customInput.addEventListener('click', e => {
 
 for (let i = 0; i < tipValueInputs.length; i++) {
 	tipValueInputs[i].addEventListener('click', e => {
-		customInput.value = ''
+		customTipInput.value = ''
 	})
 }
 
-function checkBill() {
-	if (parseFloat(billInput.value) === 'NaN') {
-		billInput.classList.add('input_error')
-		billTextError.classList.add('error')
-		billTextError.textContent = 'Not a number'
-	} else if (parseFloat(billInput.value) === 0) {
-		billInput.classList.add('input_error')
-		billTextError.classList.add('error')
-		billTextError.textContent = "Can't be zero"
-	} else if (parseFloat(billInput.value) < 0) {
-		billInput.classList.add('input_error')
-		billTextError.classList.add('error')
-		billTextError.textContent = 'Negative value'
-	} else {
-		billInput.classList.remove('input_error')
-		billTextError.classList.remove('error')
-		billTextError.textContent = ''
-	}
-}
-checkBill()
+// billInput.addEventListener('change', e => {
+// 	text = billInput.value
 
-// billInput.addEventListener('click', e => {
-// 	if (parseFloat(billInput.value) === 'NaN') {
+// 	if (isNaN(parseFloat(text)) == true) {
 // 		billInput.classList.add('input_error')
 // 		billTextError.classList.add('error')
 // 		billTextError.textContent = 'Not a number'
-// 	} else if (parseFloat(billInput.value) === 0) {
+// 	} else if (parseFloat(text) === 0) {
 // 		billInput.classList.add('input_error')
 // 		billTextError.classList.add('error')
 // 		billTextError.textContent = "Can't be zero"
-// 	} else if (parseFloat(billInput.value) < 0) {
+// 	} else if (parseFloat(text) < 0) {
 // 		billInput.classList.add('input_error')
 // 		billTextError.classList.add('error')
 // 		billTextError.textContent = 'Negative value'
 // 	} else {
+// 		calculateTip()
+// 		calculateTotal()
 // 		billInput.classList.remove('input_error')
 // 		billTextError.classList.remove('error')
 // 		billTextError.textContent = ''
 // 	}
 // })
+
+// customTipInput.addEventListener('change', e => {
+// 	text = customTipInput.value
+
+// 	if (isNaN(parseFloat(text)) == true) {
+// 		customTipInput.classList.add('input_error')
+// 		customTipTextError.classList.add('error')
+// 		customTipTextError.textContent = 'Not a number'
+// 	} else if (parseFloat(text) < 0) {
+// 		customTipInput.classList.add('input_error')
+// 		customTipTextError.classList.add('error')
+// 		customTipTextError.textContent = 'Negative value'
+// 	} else {
+// 		calculateTip()
+// 		calculateTotal()
+// 		customTipInput.classList.remove('input_error')
+// 		customTipTextError.classList.remove('error')
+// 		customTipTextError.textContent = ''
+// 	}
+// })
+
+// peopleInput.addEventListener('change', e => {
+// 	text = peopleInput.value
+
+// 	if (isNaN(parseFloat(text)) == true) {
+// 		peopleInput.classList.add('input_error')
+// 		peopleTextError.classList.add('error')
+// 		peopleTextError.textContent = 'Not a number'
+// 	} else if (parseFloat(text) === 0) {
+// 		peopleInput.classList.add('input_error')
+// 		peopleTextError.classList.add('error')
+// 		peopleTextError.textContent = "Can't be zero"
+// 	} else if (parseFloat(text) < 0) {
+// 		peopleInput.classList.add('input_error')
+// 		peopleTextError.classList.add('error')
+// 		peopleTextError.textContent = 'Negative value'
+// 	} else {
+// 		calculateTip()
+// 		calculateTotal()
+// 		peopleInput.classList.remove('input_error')
+// 		peopleTextError.classList.remove('error')
+// 		peopleTextError.textContent = ''
+// 	}
+// })
+
+// inputArr = [billInput, customTipInput, peopleInput]
+// inputErrorArr = [billTextError, customTipTextError, peopleTextError]
+
+// inputArr.forEach((input, text) => {
+// 	input.addEventListener('change', e => {
+// 		if (isNaN(parseFloat(input.value)) == true) {
+// 			input.classList.add('input_error')
+// 			text.classList.add('error')
+// 			text.textContent = 'Not a number'
+// 		} else if (parseFloat(input.value) === 0) {
+// 			input.classList.add('input_error')
+// 			text.classList.add('error')
+// 			text.textContent = "Can't be zero"
+// 		} else if (parseFloat(input.value) < 0) {
+// 			input.classList.add('input_error')
+// 			text.classList.add('error')
+// 			text.textContent = 'Negative value'
+// 		} else {
+// 			calculateTip()
+// 			calculateTotal()
+// 			input.classList.remove('input_error')
+// 			text.classList.remove('error')
+// 			text.textContent = ''
+// 		}
+// 	})
+// })
+
+const inputConfig = [
+	{ input: billInput, error: billTextError },
+	{ input: customTipInput, error: customTipTextError, canBeZero: true },
+	{ input: peopleInput, error: peopleTextError },
+]
+
+function getErrorMessage(value, canBeZero) {
+	const parsedValue = parseFloat(value)
+	if (isNaN(parsedValue)) {
+		return 'Not a number'
+	} else if (!parsedValue && !canBeZero) {
+		return "Can't be zero"
+	} else if (parsedValue < 0) {
+		return 'Negative value'
+	} else {
+		return ''
+	}
+}
+
+inputConfig.forEach(({ input, error, canBeZero }) => {
+	input.addEventListener('change', e => {
+		const errorMsg = getErrorMessage(e.target.value, canBeZero)
+		error.textContent = errorMsg
+
+		if (errorMsg) {
+			input.classList.add('input_error')
+			error.classList.add('error')
+		} else {
+			calculateTip()
+			calculateTotal()
+			input.classList.remove('input_error')
+			error.classList.remove('error')
+		}
+	})
+})
+
+function calculateTip() {
+	let tipValue
+
+	for (let i = 0; i < tipRadioButtonValue.length; i++) {
+		if (tipRadioButtonValue[i].checked) {
+			tipValue = parseInt(tipRadioButtonValue[i].value) / 100
+		}
+		// else if (tipValue.value > 0) {
+		// 	result[0].textContent =
+		// 		'$' + ((parseInt(billInput.value) * parseInt(tipValue.value)) / parseInt(peopleInput.value)).toFixed(2)
+		// }
+
+		console.log(tipValue)
+	}
+
+	if (customTipInput.value > 0) {
+		result[0].textContent = '$' + (parseInt(customTipInput.value) / parseInt(peopleInput.value)).toFixed(2)
+	}
+	// else if (tipValue.value > 0) {
+	// 	result[0].textContent =
+	// 		'$' + ((parseInt(billInput.value) * parseInt(tipValue.value)) / parseInt(peopleInput.value)).toFixed(2)
+	// }
+}
+
+function calculateTotal() {
+	if (billInput.value == '' || peopleInput.value == '') {
+		result[0].textContent = '$0.00'
+		result[1].textContent = '$0.00'
+	} else {
+		result[1].textContent =
+			'$' +
+			(
+				parseInt(billInput.value) / parseInt(peopleInput.value) +
+				parseInt(result[0].textContent.replace(/\D/g, '')) / 100
+			).toFixed(2)
+	}
+}
+
+/*
+else if (tipRadioButtonValue.checked) {
+		let tipValue
+
+		for (let i = 0; i < tipRadioButtonValue.length; i++) {
+			if (tipRadioButtonValue[i].checked) {
+				tipValue = parseInt(tipRadioButtonValue[i].value) / 100
+			}
+		}
+
+		result[0].textContent = '$' + ((parseInt(billInput.value) * tipValue.value) / peopleInput.value).toFixed(2)
+		result[1].textContent = '$' + (result[0].textContent + parseInt(billInput.value) / peopleInput.value).toFixed(2)
+*/
