@@ -34,13 +34,9 @@ body {
   background-color: #c5e4e7;
 }
 
-input::-webkit-input-placeholder {
-  font-family: 'Space Mono', monospace;
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #00494d;
-}
-
+input::-webkit-input-placeholder,
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
 input:-ms-input-placeholder {
   font-family: 'Space Mono', monospace;
   font-size: 2.4rem;
@@ -48,18 +44,24 @@ input:-ms-input-placeholder {
   color: #00494d;
 }
 
-input::-ms-input-placeholder {
+input::placeholder,
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
   font-family: 'Space Mono', monospace;
   font-size: 2.4rem;
   font-weight: bold;
   color: #00494d;
 }
 
-input::placeholder {
-  font-family: 'Space Mono', monospace;
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #00494d;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 /* SECTION */
@@ -226,8 +228,6 @@ input::placeholder {
   font-family: 'Space Mono', monospace;
   font-size: 2.4rem;
   font-weight: bold;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
   width: 100%;
   padding: 0.5rem 2rem;
   border: none;
@@ -315,6 +315,10 @@ input::placeholder {
 
 .error {
   display: block;
+}
+
+.disabled {
+  opacity: 0.2;
 }
 
 /* HOVERS / ACTIVE */
