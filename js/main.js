@@ -105,7 +105,7 @@ inputConfig.forEach(({ input, error, canBeZero }) => {
 
 function clearContent() {
 	inputConfig.forEach(input => {
-		input[0].value = ''
+		input.input.value = ''
 	})
 	result[0].textContent = '$0.00'
 	result[1].textContent = '$0.00'
